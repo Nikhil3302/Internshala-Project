@@ -1,0 +1,127 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  color: #f0f0f0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0b0d15;
+  color: #a2a5b3;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 50px 20px;
+  position: relative;
+}
+
+.content {
+  max-width: 600px;
+  padding: 2em;
+  background: #1c1f2b;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+  box-shadow: 0 0 20px rgba(255, 69, 69, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.content:hover {
+  transform: scale(1.05);
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.content::after, .content::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+
+.content::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.cta {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 1rem;
+  color: white;
+  background: blanchedalmond;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+
+.cta:hover {
+  transform: scale(1.1);
+  background: rgb(13, 191, 173);
+}
+
+@keyframes spin {
+  from {
+      --angle: 0deg;
+  }
+  to {
+      --angle: 360deg;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
